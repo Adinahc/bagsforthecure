@@ -40,6 +40,9 @@ const H2 = styled.h2`
   color: #000000;
 `; 
 
+const DetailsLogo = styled.img`
+`;
+
 const Content = styled.div`
   bottom: 0px;
   color: #ffffff;
@@ -50,7 +53,7 @@ const Content = styled.div`
   text-align: center;
   top: 0;
   right: 0;
-  valign: ceneter;
+  valign: center;
   width: 800px;
 `;
 
@@ -63,11 +66,22 @@ const H3 = styled.h3`
   color: #000000;
   font-size: 24px;
   font-weight: bolder;
-`
-const pStyle1 = {
+`;
+
+const HomePageLogo = styled.img`
+  cursor: pointer;
+  width: '200';
+`;
+
+const homeStyle = {
   backgroundImage: 'url("./imgs/DiveInnCornHole.jpg")',
   backgroundSize: '100% 100%',
-  backgroundRepeat: 'no-repeat, repeat',
+  backgroundRepeat: 'no-repeat, repeat'
+};
+
+const SlideBackground = {
+  backgroundColor: 'rgba(183, 188, 192, 255)',
+  marginTop:'0px'
 };
 
 const slides = [
@@ -90,7 +104,7 @@ class App extends React.Component {
     const goToTop = changeFullpageSlide.bind(null, 0);
     const goToTraining = changeFullpageSlide.bind(null, 1);
     const goToExperience = changeFullpageSlide.bind(null, 2);
-    const goToContact = changeFullpageSlide.bind(null, 3);
+    const goToRegister = changeFullpageSlide.bind(null, 3);
     const goToDetails = changeFullpageSlide.bind(null, 4);
     const goToTheDiveInn = changeFullpageSlide.bind(null, 5);
 
@@ -112,26 +126,29 @@ class App extends React.Component {
           <button>Dive Inn</button>
         </span>    
              
-        <span onClick={goToContact}>
-          <button>Contact</button>
+        <span onClick={goToRegister}>
+          <button>Register</button>
         </span>        
       </TopNavStyle>
     );
 
     const verticalSlides = [
-      <Slide style={pStyle1}>
+      <Slide style={homeStyle}>
         <Content>
           <H1>BAGS FOR THE CURE</H1>
           <H3>A funraising event benefiting The Leukemia and Lymphoma Society</H3>
           <H3>If you like fun and hate cancer, come join us!</H3>
           <H3>April 28, 2018 @ Dive Inn: 1380 S Broadway</H3>
-          <input type="button" value="Details" /> <input type="button" value="Register" />
-          {/*<ContentText>
-          Come have some fun in the sun and join us for Bags for the Cure, a Corn-Hole Tournament benefiting The Leukemia & Lymphoma Society (LLS). What better way to help fund the cure for cancer then to come out then to show off your corn hole skills, and enjoy the drink & food specials during the event. Tournament participants will receive their first draft on the house and entry into our raffle for prizes. 
-          </ContentText> */}
+          <input type="button" value="Details" /> <input type="button" value="Register" /><br />
+          <a href="https://www.lls.org/" target="_blank" rel="noopener noreferrer">
+            <HomePageLogo src="./imgs/LLSLogo.jpg" alt="LLS Logo" />
+          </a>
+          <a href="https://www.facebook.com/diveinndenver/" target="_blank" rel="noopener noreferrer">
+            <HomePageLogo src="./imgs/DiveInnLogo.jpg" alt="Dive Inn Logo" />
+          </a>
         </Content>
       </Slide>,
-      <Slide style={{backgroundColor: '#7d8084'}}>
+      <Slide style={SlideBackground}>
         <p>LLS Mission</p>
         <Document
           file="LLSMissionFacts.pdf"
@@ -139,7 +156,7 @@ class App extends React.Component {
           <Page pageNumber="1" />
         </Document>
       </Slide>,
-      <Slide style={{backgroundColor: '#7d8084'}}>
+      <Slide style={SlideBackground}>
         <p>Raffle Prizes</p>
         <Content>
           <h2>A big THANK YOU for our donors!</h2>
@@ -159,22 +176,60 @@ class App extends React.Component {
           </ContentText>
         </Content>       
       </Slide>,
-      <Slide style={{backgroundColor: '#7d8084'}}>
-        <p>CONTACT</p>
+      <Slide style={SlideBackground}>
+        <p>Register</p>
         <Content>
           <form action="mailto:bagsforthecure@gmail.com">
             <input type="submit" />
           </form>  
         </Content>
       </Slide>,
-      <Slide style={{backgroundColor: '#7d8084'}}>
-        <p>About</p>
+      <Slide style={SlideBackground}>
+        <p>Details</p>
         <Content>
+          <DetailsLogo src="./imgs/LLSMWLogo.jpg" />
+          <ContentText>
+            Come have some fun in the sun and join us for Bags for the Cure, a Corn-Hole Tournament benefiting The Leukemia & Lymphoma Society (LLS). What better way to help fund the cure for cancer then to come out then to show off your corn hole skills, and enjoy the drink & food specials during the event. Tournament participants will receive their first draft on the house and entry into our raffle for prizes. 
+            <br /><br />
+            <H3>What is this?</H3> 
+            <span style={{position: 'relative', top: '-25px'}}>A feel good fundraising event benefiting LLS, corn-hole tournament style.</span>
+
+            <H3>Tournament details:</H3>
+            2 person teams, double elimination, starts promptly at 1pm!<br />
+            Total of 24 teams, so sign up quick!<br />
+            1st Prize: We're working on something awesome<br />
+            2nd Prize: 2 x $50 gift cards to Argonaut<br />
+            3rd Prize: 2 x $25 gift cards to the Dive Inn<br />
+
+            How do I participate?
+            To join the tournament and secure a spot for your 2-person team make a donation of $50 or more to:
+            http://pages.mwoy.org/rm/denver18/cclarkston 
+            Don't forget to also add your team name in the comment!
+
+            What if I don't play corn hole?
+            Come cheer on your friends and enjoy the food & drink specials. Each donation of $20 will get you an entry into our raffle!
+            The Dive Inn will be a supervised-kids friendly venue to 6pm.
+
+            If you like fun and hate cancer, come join us!
+            If you like fun, hate cancer, but can't make it, please consider making a donation. Any amount helps us towards our goal
+            http://pages.mwoy.org/rm/denver18/cclarkston 
+
+            Hope to see you there!
+
+            Any questions, please send a message to bagsforthecure@gmail.com
+
+            Teams so far:
+            Bags of Fury
+            Mike & Dan          
+          </ContentText>
         </Content>
       </Slide>,
-      <Slide style={{backgroundColor: '#7d8084'}}>
-        <p>Drinks</p>
+      <Slide style={{backgroundColor: 'rgba(183, 188, 192, 255)'}}>
+        <p>The Dive Inn</p>
         <Content>
+          <H2>
+            The Dive Inn:<br />Denver's #1 Neighborhood Bar. Come and see for yourself. BYOD (Bring your own Dramamine for the boat)
+          </H2>    
         </Content>
     </Slide>
     ];
