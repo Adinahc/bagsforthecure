@@ -1,4 +1,5 @@
 import React from 'react';
+import { Checkbox, Form, Radio, Text, TextArea} from 'react-form';
 import { Fullpage, Slide } from 'fullpage-react';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
 import styled from 'styled-components';
@@ -41,6 +42,9 @@ const H2 = styled.h2`
 `; 
 
 const DetailsLogo = styled.img`
+  float: right;
+  padding-right: 20px;
+  width: 300px;
 `;
 
 const Content = styled.div`
@@ -59,7 +63,12 @@ const Content = styled.div`
 
 const ContentText = styled.div`
   color: #000000;
-  text-align: left
+  text-align: left;
+`;
+
+const DetailsContentText = styled.span`
+  position: relative;
+  top: -20px;
 `;
 
 const H3 = styled.h3` 
@@ -79,9 +88,20 @@ const homeStyle = {
   backgroundRepeat: 'no-repeat, repeat'
 };
 
+const detailsStyle = {
+  backgroundImage: 'url("./imgs/LLSMWLogo.jpg")',
+  backgroundSize: '100% 100%',
+  backgroundRepeat: 'no-repeat, repeat'
+};
+
+const diveInnStyle = {
+  backgroundImage: 'url("./imgs/DiveInnLogoBlack.jpg")',
+  backgroundSize: '100% 100%',
+  backgroundRepeat: 'no-repeat, repeat'
+};
+
 const SlideBackground = {
   backgroundColor: 'rgba(183, 188, 192, 255)',
-  marginTop:'0px'
 };
 
 const slides = [
@@ -89,8 +109,23 @@ const slides = [
   <Slide> Slide 3 </Slide>
 ];
 fullPageOptions.slides = slides;
+
+const validate = value => ({
+  error: !value || !/Hello World/.test(value) ? "Input must contain 'Hello World'" : null,
+  warning: !value || !/^Hello World$/.test(value) ? "Input should equal just 'Hello World'" : null,
+  success: value && /Hello World/.test(value) ? "Thanks for entering 'Hello World'!" : null
+})
  
 class App extends React.Component {
+  state = {
+    numPages: null,
+    pageNumber: 1,
+  }
+
+  onDocumentLoad = ({ numPages }) => {
+    this.setState({ numPages });
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -101,6 +136,7 @@ class App extends React.Component {
   }
 
   render() {
+    const pageNumber = 1;
     const goToTop = changeFullpageSlide.bind(null, 0);
     const goToTraining = changeFullpageSlide.bind(null, 1);
     const goToExperience = changeFullpageSlide.bind(null, 2);
@@ -125,7 +161,6 @@ class App extends React.Component {
         <span onClick={goToTheDiveInn}>
           <button>Dive Inn</button>
         </span>    
-             
         <span onClick={goToRegister}>
           <button>Register</button>
         </span>        
@@ -150,17 +185,22 @@ class App extends React.Component {
       </Slide>,
       <Slide style={SlideBackground}>
         <p>LLS Mission</p>
-        <Document
-          file="LLSMissionFacts.pdf"
-        >
-          <Page pageNumber="1" />
-        </Document>
+        <Content>
+          <a href="LLSMissionFacts.pdf" target="_blank">
+          <Document
+            file="LLSMissionFacts.pdf"
+            onLoadSuccess={this.onDocumentLoad}
+          >
+            <Page pageNumber={pageNumber} />
+          </Document> 
+          </a>
+        </Content>       
       </Slide>,
       <Slide style={SlideBackground}>
         <p>Raffle Prizes</p>
         <Content>
-          <h2>A big THANK YOU for our donors!</h2>
-          <h3>What can I win from the raffle?</h3>
+          <H2>A big THANK YOU for our donors!</H2>
+          <H3>What can I win from the raffle?</H3>
           <ContentText>
             <ul>
               <li>A gift card for Sobo 151</li>
@@ -179,57 +219,64 @@ class App extends React.Component {
       <Slide style={SlideBackground}>
         <p>Register</p>
         <Content>
-          <form action="mailto:bagsforthecure@gmail.com">
-            <input type="submit" />
-          </form>  
+          <Form>
+            {formApi => (
+              <form onSubmit={formApi.submitForm} id="form1" className="mb-4">
+                <label htmlFor="hello">Hello World</label>
+                <Text field="hello" id="hello" validate={validate} />
+                <button type="submit" className="btn btn-primary">
+                  Submit
+                </button>
+              </form>
+            )}
+          </Form>
         </Content>
       </Slide>,
       <Slide style={SlideBackground}>
         <p>Details</p>
         <Content>
-          <DetailsLogo src="./imgs/LLSMWLogo.jpg" />
+        <div style={{marginTop: -50}}>
           <ContentText>
+            <DetailsLogo src="./imgs/LLSMWLogo.jpg" />
             Come have some fun in the sun and join us for Bags for the Cure, a Corn-Hole Tournament benefiting The Leukemia & Lymphoma Society (LLS). What better way to help fund the cure for cancer then to come out then to show off your corn hole skills, and enjoy the drink & food specials during the event. Tournament participants will receive their first draft on the house and entry into our raffle for prizes. 
             <br /><br />
-            <H3>What is this?</H3> 
-            <span style={{position: 'relative', top: '-25px'}}>A feel good fundraising event benefiting LLS, corn-hole tournament style.</span>
-
             <H3>Tournament details:</H3>
-            2 person teams, double elimination, starts promptly at 1pm!<br />
-            Total of 24 teams, so sign up quick!<br />
-            1st Prize: We're working on something awesome<br />
-            2nd Prize: 2 x $50 gift cards to Argonaut<br />
-            3rd Prize: 2 x $25 gift cards to the Dive Inn<br />
-
-            How do I participate?
-            To join the tournament and secure a spot for your 2-person team make a donation of $50 or more to:
-            http://pages.mwoy.org/rm/denver18/cclarkston 
-            Don't forget to also add your team name in the comment!
-
-            What if I don't play corn hole?
+            <DetailsContentText> 
+              2 person teams, double elimination, starts promptly at 1pm!<br />
+              Total of 24 teams, so sign up quick!<br />
+              1st Prize: We're working on something awesome<br />
+              2nd Prize: 2 x $50 gift cards to Argonaut<br />
+              3rd Prize: 2 x $25 gift cards to the Dive Inn<br />
+            </DetailsContentText>
+            <H3>How do I participate?</H3>
+            <DetailsContentText> 
+            To join the tournament and secure a spot for your 2-person team make a donation of $50 or more to 
+            <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank"> my donation page</a> and register via our <a href="#" onClick={goToRegister}>registration page</a>. 
+             An email will be sent when you have been registered.
+            </DetailsContentText> 
+            <H3>What if I don't play corn hole?</H3>
+            <DetailsContentText> 
             Come cheer on your friends and enjoy the food & drink specials. Each donation of $20 will get you an entry into our raffle!
-            The Dive Inn will be a supervised-kids friendly venue to 6pm.
-
-            If you like fun and hate cancer, come join us!
-            If you like fun, hate cancer, but can't make it, please consider making a donation. Any amount helps us towards our goal
-            http://pages.mwoy.org/rm/denver18/cclarkston 
-
-            Hope to see you there!
-
+            <br />
+            If you can't make it, please consider making a donation on <a href="http://pages.mwoy.org/rm/denver18/cclarkston">my donation page</a>.  Any amount helps us towards our goal
+            <br />
             Any questions, please send a message to bagsforthecure@gmail.com
-
-            Teams so far:
-            Bags of Fury
-            Mike & Dan          
+            </DetailsContentText>      
           </ContentText>
+          </div>
         </Content>
       </Slide>,
-      <Slide style={{backgroundColor: 'rgba(183, 188, 192, 255)'}}>
+      <Slide style={diveInnStyle}>
         <p>The Dive Inn</p>
         <Content>
-          <H2>
-            The Dive Inn:<br />Denver's #1 Neighborhood Bar. Come and see for yourself. BYOD (Bring your own Dramamine for the boat)
-          </H2>    
+          <H2>The Dive Inn</H2>
+          <H3>Denver's #1 Neighborhood Bar. Come and see for yourself.</H3>
+            <a href="./imgs/DiveInn365Specials2018.jpg" target="_blank">
+            <img src="./imgs/DiveInn365Specials2018ThumbNail.jpg" style={{paddingRight: 5}} />
+            </a>
+            <a href="./imgs/DiveInnMoscowMule2017.jpg" target="_blank">  
+            <img src="./imgs/DiveInnMoscowMule2017ThumbNail.jpg" style={{paddingLeft: 5}} />
+            </a>
         </Content>
     </Slide>
     ];
