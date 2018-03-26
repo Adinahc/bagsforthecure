@@ -1,5 +1,4 @@
 import React from 'react';
-import { Checkbox, Form, Radio, Text, TextArea} from 'react-form';
 import { Fullpage, Slide } from 'fullpage-react';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
 import styled from 'styled-components';
@@ -31,6 +30,10 @@ const TopNavStyle = styled.div`
   top: 0px;
   width: 100%;
   z-index: 10;
+`;
+
+const FormLabel = styled.span`
+  color: #000;
 `;
 
 const H1 = styled.h1`
@@ -117,6 +120,7 @@ const validate = value => ({
 })
  
 class App extends React.Component {
+  
   state = {
     numPages: null,
     pageNumber: 1,
@@ -136,6 +140,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(validate);
     const pageNumber = 1;
     const goToTop = changeFullpageSlide.bind(null, 0);
     const goToTraining = changeFullpageSlide.bind(null, 1);
@@ -219,17 +224,12 @@ class App extends React.Component {
       <Slide style={SlideBackground}>
         <p>Register</p>
         <Content>
-          <Form>
-            {formApi => (
-              <form onSubmit={formApi.submitForm} id="form1" className="mb-4">
-                <label htmlFor="hello">Hello World</label>
-                <Text field="hello" id="hello" validate={validate} />
-                <button type="submit" className="btn btn-primary">
-                  Submit
-                </button>
-              </form>
-            )}
-          </Form>
+          <form>
+            <FormLabel htmlFor="teamName">Team Name</FormLabel>
+            <input type="text" id="teamName" validate={validate} /><br />
+                <label htmlFor="teamName">Team Name</label>
+
+          </form>
         </Content>
       </Slide>,
       <Slide style={SlideBackground}>
