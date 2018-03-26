@@ -2,9 +2,14 @@
   "name": "bagsforthecure",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "enzyme": "^2.8.2",
+    "react-scripts": "^1.0.2",
+    "react-test-renderer": "^15.6.1"
+  },  
   "dependencies": {
     "fullpage-react": "^3.0.29",
-    "react": "^16.2.0",
+    "react": "^15.5.0",
     "react-dom": "^16.2.0",
     "react-pdf": "^3.0.2",
     "react-scripts": "1.1.1",
