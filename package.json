@@ -23,5 +23,5 @@
     "eject": "./node_modules/react-scripts/bin/react-scripts.js eject",
     "server": "cd client/api && pm2 start server.js --watch",
     "proxy": "http://128.199.139.144:3000"
-  },
+  }
 }
