@@ -32,8 +32,21 @@ const TopNavStyle = styled.div`
   z-index: 10;
 `;
 
+const Table = styled.div`
+  display: table;
+`;
+
+const TableRow = styled.div`
+  display: table-row;
+`;
+
+const TableCell= styled.div`
+  display: table-cell;
+`;
+
 const FormLabel = styled.span`
   color: #000;
+  padding-right: 10px;
 `;
 
 const H1 = styled.h1`
@@ -93,6 +106,12 @@ const homeStyle = {
 
 const detailsStyle = {
   backgroundImage: 'url("./imgs/LLSMWLogo.jpg")',
+  backgroundSize: '100% 100%',
+  backgroundRepeat: 'no-repeat, repeat'
+};
+
+const registerStyle = {
+  backgroundImage: 'url("./imgs/CornHoleBoard.jpg")',
   backgroundSize: '100% 100%',
   backgroundRepeat: 'no-repeat, repeat'
 };
@@ -221,15 +240,36 @@ class App extends React.Component {
           </ContentText>
         </Content>       
       </Slide>,
-      <Slide style={SlideBackground}>
+      <Slide style={registerStyle }>
         <p>Register</p>
-        <Content>
-          <form>
-            <FormLabel htmlFor="teamName">Team Name</FormLabel>
-            <input type="text" id="teamName" validate={validate} /><br />
-                <label htmlFor="teamName">Team Name</label>
-
-          </form>
+        <Content>      
+          <ContentText>    
+          <H2>Register Your Team!</H2>  
+          To register your 2-person team, please submit the form below and make a <b>Tax-Deductible</b> $50 donation to my <a href=''>official campainge donation page</a>. An email will be sent once your registration has been confirmed.<br />
+          All donations go directly to The Leukemia & Lymphoma Society<br />
+          Thank you!!!
+            <form>
+              <Table>
+                <TableRow>
+                  <TableCell><FormLabel htmlFor="teamName">Team Name: </FormLabel></TableCell>
+                  <TableCell><input type="text" id="teamName" validate={validate} /></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><FormLabel htmlFor="emailAddress">Email Address: </FormLabel></TableCell>
+                  <TableCell><input type="text" id="emailAddress" validate={validate} /></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell><FormLabel htmlFor="phoneNumber">Phone Number: </FormLabel></TableCell>
+                  <TableCell><input type="text" id="phoneNumber" validate={validate} /></TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>
+                    <input type="Submit" value="Submit" />    
+                  </TableCell>
+                </TableRow>
+              </Table>
+            </form>
+          </ContentText>
         </Content>
       </Slide>,
       <Slide style={SlideBackground}>
