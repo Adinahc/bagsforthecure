@@ -2,6 +2,9 @@
   "name": "bagsforthecure",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=6.9.1"
+  },
   "dependencies": {
     "fullpage-react": "^3.0.29",
     "react": "^16.2.0",
@@ -10,10 +13,7 @@
     "react-scripts": "1.1.1",
     "styled-components": "^3.2.3"
   },
-  "engines": {
-    "node": ">=6.9.1"
-  },
   "scripts": {
-      "start": "node index.js"
+      "start": "node ./src/index.js"
   }
 }
