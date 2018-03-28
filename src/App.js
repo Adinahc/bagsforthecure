@@ -71,9 +71,8 @@ const Content = styled.div`
   margin: auto;
   position: absolute;
   text-align: center;
-  top: 0;
+  top: -30%;
   right: 0;
-  valign: center;
   width: 800px;
 `;
 
@@ -208,7 +207,6 @@ class App extends React.Component {
         </Content>
       </Slide>,
       <Slide style={SlideBackground}>
-        <p>LLS Mission</p>
         <Content>
           <a href="LLSMissionFacts.pdf" target="_blank">
           <Document
@@ -221,7 +219,6 @@ class App extends React.Component {
         </Content>       
       </Slide>,
       <Slide style={SlideBackground}>
-        <p>Raffle Prizes</p>
         <Content>
           <H2>A big THANK YOU for our donors!</H2>
           <H3>What can I win from the raffle?</H3>
@@ -241,7 +238,6 @@ class App extends React.Component {
         </Content>       
       </Slide>,
       <Slide style={registerStyle }>
-        <p>Register</p>
         <Content>      
           <ContentText>    
           <H2>Register Your Team!</H2>  
@@ -273,7 +269,6 @@ class App extends React.Component {
         </Content>
       </Slide>,
       <Slide style={SlideBackground}>
-        <p>Details</p>
         <Content>
         <div style={{marginTop: -50}}>
           <ContentText>
@@ -307,7 +302,6 @@ class App extends React.Component {
         </Content>
       </Slide>,
       <Slide style={diveInnStyle}>
-        <p>The Dive Inn</p>
         <Content>
           <H2>The Dive Inn</H2>
           <H3>Denver's #1 Neighborhood Bar. Come and see for yourself.</H3>
