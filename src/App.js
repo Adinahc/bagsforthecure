@@ -2,8 +2,26 @@ import React from 'react';
 import { Fullpage, Slide } from 'fullpage-react';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
 import styled from 'styled-components';
+import validator from 'validator';
+import Form from 'react-validation/build/form';
+import Input from 'react-validation/build/input';
+import Button from 'react-validation/build/input';
+
 require('./normalize.css');
 require('./skeleton.css');
+
+const required = (value) => {
+  if (!value.toString().trim().length) {
+    // We can return string or jsx as the 'error' prop for the validated Component
+    return 'require';
+  }
+};
+ 
+const email = (value) => {
+  if (!validator.isEmail(value)) {
+    return `${value} is not a valid email.`
+  }
+};
 
 const { 
   changeFullpageSlide, 
@@ -50,11 +68,11 @@ const FormLabel = styled.span`
 `;
 
 const H1 = styled.h1`
-  color: #000000;
+  color: #000;
 `; 
 
 const H2 = styled.h2`
-  color: #000000;
+  color: #000;
 `; 
 
 const DetailsLogo = styled.img`
@@ -65,19 +83,19 @@ const DetailsLogo = styled.img`
 
 const Content = styled.div`
   bottom: 0px;
-  color: #ffffff;
+  color: #fff;
   height: 400px;
   left: 0;
   margin: auto;
   position: absolute;
   text-align: center;
-  top: -30%;
+  top: -20%;
   right: 0;
   width: 800px;
 `;
 
 const ContentText = styled.div`
-  color: #000000;
+  color: #000;
   text-align: left;
 `;
 
@@ -87,7 +105,7 @@ const DetailsContentText = styled.span`
 `;
 
 const H3 = styled.h3` 
-  color: #000000;
+  color: #000;
   font-size: 24px;
   font-weight: bolder;
 `;
@@ -121,6 +139,11 @@ const diveInnStyle = {
   backgroundRepeat: 'no-repeat, repeat'
 };
 
+const prizesStyle = {
+  backgroundImage: 'url("./imgs/ThankYou.jpg")',
+  backgroundRepeat: 'no-repeat, repeat'
+};
+
 const SlideBackground = {
   backgroundColor: 'rgba(183, 188, 192, 255)',
 };
@@ -131,12 +154,6 @@ const slides = [
 ];
 fullPageOptions.slides = slides;
 
-const validate = value => ({
-  error: !value || !/Hello World/.test(value) ? "Input must contain 'Hello World'" : null,
-  warning: !value || !/^Hello World$/.test(value) ? "Input should equal just 'Hello World'" : null,
-  success: value && /Hello World/.test(value) ? "Thanks for entering 'Hello World'!" : null
-})
- 
 class App extends React.Component {
   
   state = {
@@ -148,6 +165,17 @@ class App extends React.Component {
     this.setState({ numPages });
   }
 
+  handleClick = () => {
+console.log(this);
+    //this.form.validateAll();
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+
+    console.log(event);
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -158,7 +186,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(validate);
     const pageNumber = 1;
     const goToTop = changeFullpageSlide.bind(null, 0);
     const goToTraining = changeFullpageSlide.bind(null, 1);
@@ -175,11 +202,11 @@ class App extends React.Component {
         <span onClick={goToDetails}>
           <button>Details</button>
         </span>  
-        <span onClick={goToTraining}>
-          <button>LLS Mission</button>
-        </span>
         <span onClick={goToExperience}>
           <button>Prizes</button>
+        </span>
+        <span onClick={goToTraining}>
+          <button>LLS Mission</button>
         </span>
         <span onClick={goToTheDiveInn}>
           <button>Dive Inn</button>
@@ -218,7 +245,7 @@ class App extends React.Component {
           </a>
         </Content>       
       </Slide>,
-      <Slide style={SlideBackground}>
+      <Slide style={prizesStyle}>
         <Content>
           <H2>A big THANK YOU for our donors!</H2>
           <H3>What can I win from the raffle?</H3>
@@ -244,33 +271,33 @@ class App extends React.Component {
           To register your 2-person team, please submit the form below and make a <b>Tax-Deductible</b> $50 donation to my <a href=''>official campainge donation page</a>. An email will be sent once your registration has been confirmed.<br />
           All donations go directly to The Leukemia & Lymphoma Society<br />
           Thank you!!!
-            <form>
+            <Form>
               <Table>
                 <TableRow>
                   <TableCell><FormLabel htmlFor="teamName">Team Name: </FormLabel></TableCell>
-                  <TableCell><input type="text" id="teamName" validate={validate} /></TableCell>
+                  <TableCell><Input type="text" id="teamName"  validations={[required]} /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell><FormLabel htmlFor="emailAddress">Email Address: </FormLabel></TableCell>
-                  <TableCell><input type="text" id="emailAddress" validate={validate} /></TableCell>
+                  <TableCell><input type="text" id="emailAddress"  /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell><FormLabel htmlFor="phoneNumber">Phone Number: </FormLabel></TableCell>
-                  <TableCell><input type="text" id="phoneNumber" validate={validate} /></TableCell>
+                  <TableCell><input type="text" id="phoneNumber" /></TableCell>
                 </TableRow>
                 <TableRow>
                   <TableCell>
-                    <input type="Submit" value="Submit" />    
+                  <button className="button" type="button" onClick={this.handleClick}>Validate all</button>
                   </TableCell>
                 </TableRow>
               </Table>
-            </form>
+            </Form>
           </ContentText>
         </Content>
       </Slide>,
       <Slide style={SlideBackground}>
         <Content>
-        <div style={{marginTop: -50}}>
+        <div>
           <ContentText>
             <DetailsLogo src="./imgs/LLSMWLogo.jpg" />
             Come have some fun in the sun and join us for Bags for the Cure, a Corn-Hole Tournament benefiting The Leukemia & Lymphoma Society (LLS). What better way to help fund the cure for cancer then to come out then to show off your corn hole skills, and enjoy the drink & food specials during the event. Tournament participants will receive their first draft on the house and entry into our raffle for prizes. 

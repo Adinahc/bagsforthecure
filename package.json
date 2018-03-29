@@ -8,7 +8,9 @@
     "react-dom": "^16.2.0",
     "react-pdf": "^3.0.2",
     "react-scripts": "1.1.1",
-    "styled-components": "^3.2.3"
+    "react-validation": "^3.0.7",
+    "styled-components": "^3.2.3",
+    "validator": "^9.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
