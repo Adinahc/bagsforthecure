@@ -2,26 +2,11 @@ import React from 'react';
 import { Fullpage, Slide } from 'fullpage-react';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
 import styled from 'styled-components';
-import validator from 'validator';
-import Form from 'react-validation/build/form';
-import Input from 'react-validation/build/input';
-import Button from 'react-validation/build/input';
+import ContactForm from './ContactForm'
+
 
 require('./normalize.css');
 require('./skeleton.css');
-
-const required = (value) => {
-  if (!value.toString().trim().length) {
-    // We can return string or jsx as the 'error' prop for the validated Component
-    return 'require';
-  }
-};
- 
-const email = (value) => {
-  if (!validator.isEmail(value)) {
-    return `${value} is not a valid email.`
-  }
-};
 
 const { 
   changeFullpageSlide, 
@@ -148,12 +133,6 @@ const SlideBackground = {
   backgroundColor: 'rgba(183, 188, 192, 255)',
 };
 
-const slides = [
-  <Slide> Slide 1 </Slide>,
-  <Slide> Slide 3 </Slide>
-];
-fullPageOptions.slides = slides;
-
 class App extends React.Component {
   
   state = {
@@ -165,15 +144,14 @@ class App extends React.Component {
     this.setState({ numPages });
   }
 
-  handleClick = () => {
-console.log(this);
+  handleClick = (e) => {
+    var form = document.getElementById("RegisterForm");
     //this.form.validateAll();
   };
 
   handleSubmit = (event) => {
-    event.preventDefault();
 
-    console.log(event);
+    event.preventDefault();
   };
 
   constructor(props) {
@@ -181,11 +159,23 @@ console.log(this);
     this.state = {
       active: {
         Fullpage: 0,
-      }
+      },
+      teamName: '',
+      email: '',
+      phoneNumber: ''
     };
   }
 
+  onChange = (e) => {
+    // Because we named the inputs to match their corresponding values in state, it's
+    // super easy to update the state
+    const state = this.state
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  }
+
   render() {
+    const { teamName, email, phoneNumber } = this.state;
     const pageNumber = 1;
     const goToTop = changeFullpageSlide.bind(null, 0);
     const goToTraining = changeFullpageSlide.bind(null, 1);
@@ -271,27 +261,7 @@ console.log(this);
           To register your 2-person team, please submit the form below and make a <b>Tax-Deductible</b> $50 donation to my <a href=''>official campainge donation page</a>. An email will be sent once your registration has been confirmed.<br />
           All donations go directly to The Leukemia & Lymphoma Society<br />
           Thank you!!!
-            <Form>
-              <Table>
-                <TableRow>
-                  <TableCell><FormLabel htmlFor="teamName">Team Name: </FormLabel></TableCell>
-                  <TableCell><Input type="text" id="teamName"  validations={[required]} /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell><FormLabel htmlFor="emailAddress">Email Address: </FormLabel></TableCell>
-                  <TableCell><input type="text" id="emailAddress"  /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell><FormLabel htmlFor="phoneNumber">Phone Number: </FormLabel></TableCell>
-                  <TableCell><input type="text" id="phoneNumber" /></TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>
-                  <button className="button" type="button" onClick={this.handleClick}>Validate all</button>
-                  </TableCell>
-                </TableRow>
-              </Table>
-            </Form>
+          <ContactForm />
           </ContentText>
         </Content>
       </Slide>,
