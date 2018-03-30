@@ -9,6 +9,7 @@ import Button from 'react-validation/build/input';
 
 require('./normalize.css');
 require('./skeleton.css');
+require('./App.css');
 
 const required = (value) => {
   if (!value.toString().trim().length) {
