@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 require('./normalize.css');
 require('./skeleton.css');
+require('./App.css');
 
 const { 
   changeFullpageSlide, 
