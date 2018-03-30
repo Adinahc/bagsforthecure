@@ -2,8 +2,6 @@ import React from 'react';
 import { Fullpage, Slide } from 'fullpage-react';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
 import styled from 'styled-components';
-import ContactForm from './ContactForm'
-
 
 require('./normalize.css');
 require('./skeleton.css');
@@ -59,6 +57,10 @@ const H1 = styled.h1`
 const H2 = styled.h2`
   color: #000;
 `; 
+
+const Success = styled.span`
+  color: green;
+`;
 
 const DetailsLogo = styled.img`
   float: right;
@@ -137,26 +139,37 @@ const SlideBackground = {
   backgroundColor: 'rgba(183, 188, 192, 255)',
 };
 
-class App extends React.Component {
-  
-  state = {
-    numPages: null,
-    pageNumber: 1,
-  }
+const Hidden = {
+  display: 'none'
+}
 
+const Visible = {
+  display: 'block'
+}
+
+class App extends React.Component {
   onDocumentLoad = ({ numPages }) => {
     this.setState({ numPages });
   }
 
-  handleClick = (e) => {
-    var form = document.getElementById("RegisterForm");
-    //this.form.validateAll();
-  };
-
-  handleSubmit = (event) => {
-
+  handleSubmit(event) {
     event.preventDefault();
-  };
+    const data = new FormData(event.target);
+    this.setState({ 
+      successMessageVisibility: Visible,
+      formVisibility: Hidden
+    });  
+    fetch('/api/sendMail', {
+      method: 'POST',
+      body: data,
+    }).then(function(response) {
+    /*console.log(this);
+      this.setState({ 
+        successMessageVisibility: Visible,
+        formVisibility: Hidden
+        });*/
+    })
+  }
 
   constructor(props) {
     super(props);
@@ -164,18 +177,10 @@ class App extends React.Component {
       active: {
         Fullpage: 0,
       },
-      teamName: '',
-      email: '',
-      phoneNumber: ''
+      successMessageVisibility: Hidden,
+      formVisibility: Visible     
     };
-  }
-
-  onChange = (e) => {
-    // Because we named the inputs to match their corresponding values in state, it's
-    // super easy to update the state
-    const state = this.state
-    state[e.target.name] = e.target.value;
-    this.setState(state);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
@@ -214,8 +219,8 @@ class App extends React.Component {
     const verticalSlides = [
       <Slide style={homeStyle}>
         <Content>
+        <p className="App-intro">{this.state.response}</p>
           <SiteLogo src="./imgs/BagsForTheCure-Logo.png" />
-          <H1>BAGS FOR THE CURE</H1>
           <H3>A funraising event benefiting The Leukemia and Lymphoma Society</H3>
           <H3>If you like fun and hate cancer, come join us!</H3>
           <H3>April 28, 2018 @ Dive Inn: 1380 S Broadway</H3>
@@ -261,12 +266,37 @@ class App extends React.Component {
       </Slide>,
       <Slide style={registerStyle }>
         <Content>      
-          <ContentText>    
+          <ContentText>   
           <H2>Register Your Team!</H2>  
           To register your 2-person team, please submit the form below and make a <b>Tax-Deductible</b> $50 donation to my <a href=''>official campainge donation page</a>. An email will be sent once your registration has been confirmed.<br />
           All donations go directly to The Leukemia & Lymphoma Society<br />
           Thank you!!!
-          <ContactForm />
+          <div style={this.state.formVisibility}>
+            <form className="contact-form" onSubmit={this.handleSubmit}>
+              <div className="form-field">
+                <label htmlFor="name">
+                  <div className="label-content">Name:</div>
+                  <input type="text" name="name" required />
+                </label>
+              </div>
+              <div className="form-field">
+                <label htmlFor="email">
+                  <div className="label-content">Email:</div>
+                  <input type="email" name="email" required />
+                </label>
+              </div>
+              <div className="form-field">
+                <label htmlFor="message">
+                  <div className="label-content">Message:</div>
+                  <textarea className="stretch" name="message" rows="5" required />
+                </label>
+              </div>
+              <button type="submit">Send</button>
+            </form>
+          </div>  
+          <div style={this.state.successMessageVisibility}>
+            <Success><br />Thank you for registering. Once your donation has been confirmed, we will send you a confirmation email!</Success>
+          </div>  
           </ContentText>
         </Content>
       </Slide>,
