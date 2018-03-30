@@ -30,12 +30,12 @@ const {
 const fullPageOptions = {
   // for mouse/wheel events
   // represents the level of force required to generate a slide change on non-mobile, 10 is default
-  scrollSensitivity: 7,
+  scrollSensitivity: 0,
 
   // for touchStart/touchEnd/mobile scrolling
   // represents the level of force required to generate a slide change on mobile, 10 is default
   touchSensitivity: 7,
-  scrollSpeed: 500,
+  scrollSpeed: 300,
   hideScrollBars: true,
   enableArrowKeys: true
 };
@@ -109,6 +109,10 @@ const H3 = styled.h3`
   font-size: 24px;
   font-weight: bolder;
 `;
+
+const SiteLogo = styled.img`
+  width: 700px;
+`
 
 const HomePageLogo = styled.img`
   cursor: pointer;
@@ -220,6 +224,7 @@ console.log(this);
     const verticalSlides = [
       <Slide style={homeStyle}>
         <Content>
+          <SiteLogo src="./imgs/BagsForTheCure-Logo.png" />
           <H1>BAGS FOR THE CURE</H1>
           <H3>A funraising event benefiting The Leukemia and Lymphoma Society</H3>
           <H3>If you like fun and hate cancer, come join us!</H3>
