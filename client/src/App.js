@@ -1,8 +1,8 @@
 import React from 'react';
 import { Fullpage, Slide } from 'fullpage-react';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
-import {Navbar, Nav, NavItem, Image, Grid, Row, Col} from 'react-bootstrap'
-import { diveInnStyle, floatLeft, floatRight, fullWidth, gridCenterAlign, gridLeftAlign, hidden, homeStyle, navBar, prizesStyle , registerStyle, rowTopMargin, slideBackground, visible, DetailsContentText, H2, H3, Success } from './Slide.Styles';
+import { Navbar, Nav, NavItem, Image, Grid, Row, Col} from 'react-bootstrap'
+import { diveInnStyle, floatLeft, floatRight, fullWidth, gridCenterAlign, gridLeftAlign, hidden, homeStyle, prizesStyle , registerStyle, rowTopMargin, slideBackground, visible, DetailsContentText, H2, H3, Success } from './Slide.Styles';
 
 require('./normalize.css');
 require('./skeleton.css');
@@ -14,7 +14,7 @@ const {
 
 const pageNumber = 1;
 
-const fullPageOptions = {
+const fullPageOptions = { 
   // for mouse/wheel events
   // represents the level of force required to generate a slide change on non-mobile, 10 is default
   scrollSensitivity: 0,
@@ -61,7 +61,6 @@ class App extends React.Component {
     console.log(data);
     fetch('/api/sendMail', {
       method: 'POST',
-      body: data,
     }).then(function(response) {
     
     /*console.log(this);
@@ -79,7 +78,10 @@ class App extends React.Component {
         Fullpage: 0,
       },
       successMessageVisibility: hidden,
-      formVisibility: visible     
+      formVisibility: visible,
+      name: '',
+      email: '',
+      phoneNumber: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -250,8 +252,8 @@ class App extends React.Component {
               </div>
               <div className="form-field">
                 <label htmlFor="phonenumber">
-                  <div className="label-content">Phone number:</div>
-                  <input type="text" name="phoneNumber" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} required />
+                  <div className="label-content" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} >Phone number:</div>
+                  <input type="text" name="phoneNumber" required />
                 </label>
               </div>
               <button type="submit">Send</button>

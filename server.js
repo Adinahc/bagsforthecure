@@ -18,7 +18,7 @@ app.post('/api/sendMail', (req, res) => {
     const sgMail = require('@sendgrid/mail');
     sgMail.setApiKey('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');
     const msg = {
-      to: 'bagsforthecure@gmail.com',
+      to: 'adinahc@gmail.com',
       from: 'adinahc@gmail.com',
       subject: 'Bags for the Cure Registration',
       text: 'Registration'
