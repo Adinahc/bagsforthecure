@@ -27,6 +27,13 @@ body {
   font-size: large;
 }
 
+.collapse {
+  background-image: linear-gradient(rgb(60, 60, 60) 0px, rgb(34, 34, 34) 100%);
+  background-repeat: repeat-x;
+  margin-right: -20px;
+  float: right;  
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
