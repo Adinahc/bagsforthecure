@@ -1,10 +1,9 @@
 import React from 'react';
+import axios from 'axios';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
 import { Navbar, Nav, NavItem, Image, Grid, Row, Col} from 'react-bootstrap'
 import { diveInnStyle, floatLeft, floatRight, fullWidth, gridCenterAlign, gridLeftAlign, hidden, homeStyle, prizesStyle , registerStyle, rowTopMargin, slideBackground, visible, DetailsContentText, H2, H3, Success } from './Slide.Styles';
 
-require('./normalize.css');
-require('./skeleton.css');
 require('./App.css');
 
 const pageNumber = 1;
@@ -37,18 +36,17 @@ class App extends React.Component {
       email: this.state.email,
       phone: this.state.phoneNumber
     }
-    var data = new FormData();
-    data.append( "json", JSON.stringify( payload ) );    
-    fetch('/api/sendMail', {
-      method: 'POST',
-    }).then(function(response) {
-    
-    /*console.log(this);
-      this.setState({ 
-        successMessageVisibility: Visible,
-        formVisibility: Hidden
-        });*/
-    })
+
+
+    const user = {
+      name: this.state.name
+    };
+
+    axios.post(`https://jsonplaceholder.typicode.com/users`, { user })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
   }
 
   constructor(props) {
@@ -95,7 +93,7 @@ class App extends React.Component {
     ); 
 
     const ResponsiveDivs = [      
-      <div style={homeStyle}>
+      <div style={homeStyle} key={1}>
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridCenterAlign}>
@@ -113,7 +111,7 @@ class App extends React.Component {
           </Row>
         </Grid>  
       </div>,
-      <div style={slideBackground} id='details'>
+      <div style={slideBackground} id='details' key={2}>
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridLeftAlign}>
@@ -145,7 +143,7 @@ class App extends React.Component {
           </Row>
         </Grid>
       </div>,       
-      <div style={prizesStyle} id="prizes">
+      <div style={prizesStyle} id="prizes" key={3}>
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridCenterAlign}>
@@ -166,7 +164,7 @@ class App extends React.Component {
           </Row>
         </Grid>    
       </div>,
-      <div style={slideBackground} id='llsMission'>
+      <div style={slideBackground} id='llsMission' key={4}>
         <Grid>
           <Row style={{rowTopMargin}}>
             <Col xs={12} md={12} style={gridLeftAlign}>
@@ -184,7 +182,7 @@ class App extends React.Component {
           </Row>
         </Grid>
       </div>,
-      <div style={diveInnStyle} id='diveInn'>
+      <div style={diveInnStyle} id='diveInn' key={5}>
         <Grid>
           <Row style={{rowTopMargin}}>
             <Col xs={12} md={12} style={gridCenterAlign}>
@@ -200,14 +198,14 @@ class App extends React.Component {
           </Row>
         </Grid>
       </div>,
-      <div style={registerStyle} id='register'>
+      <div style={registerStyle} id='register' key={6}>
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridLeftAlign}>
               <H2>Register Your Team!</H2>  
               To register your 2-person team, please submit the form below and make a <b>Tax-Deductible</b> $50 donation to my <a href=''>official campainge donation page</a>. An email will be sent once your registration has been confirmed.<br />
               All donations go directly to The Leukemia & Lymphoma Society<br />
-              Thank you!!!
+              Thank you!!!<br /><br />
               <div style={this.state.formVisibility}>
               <form className="contact-form" onSubmit={this.handleSubmit}>
               <div className="form-field">

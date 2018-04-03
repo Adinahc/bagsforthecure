@@ -11,10 +11,12 @@
   "scripts": {
     "client": "cd client && npm start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"", 
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "@sendgrid/mail": "^6.2.1",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "react-bootstrap": "^0.32.1"

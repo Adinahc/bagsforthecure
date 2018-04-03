@@ -32,7 +32,8 @@ const registerStyle = {
     backgroundImage: 'url("./imgs/CornHoleBoard.jpg")',
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat, repeat',
-    minHeight: '100vh'
+    minHeight: '100vh',
+    overflow: 'auto',
 };
   
 const diveInnStyle = {
@@ -47,13 +48,14 @@ const prizesStyle = {
     backgroundImage: 'url("./imgs/Dive-Inn-Exterior.jpg")',
     backgroundSize: '100% 100%',
     backgroundRepeat: 'no-repeat, repeat',
-    minHeight: '100vh'
+    minHeight: '100vh',
+    overflow: 'auto',
 };
   
 const slideBackground = {
     backgroundColor: 'rgba(183, 188, 192, 255)',
     minHeight: '100vh',
-    overflow: 'scroll'
+    overflow: 'auto',
 };
 
 const hidden = {
