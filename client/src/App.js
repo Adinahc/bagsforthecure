@@ -1,5 +1,4 @@
 import React from 'react';
-import { Fullpage, Slide } from 'fullpage-react';
 import { Document, Page } from 'react-pdf/dist/entry.noworker';
 import { Navbar, Nav, NavItem, Image, Grid, Row, Col} from 'react-bootstrap'
 import { diveInnStyle, floatLeft, floatRight, fullWidth, gridCenterAlign, gridLeftAlign, hidden, homeStyle, prizesStyle , registerStyle, rowTopMargin, slideBackground, visible, DetailsContentText, H2, H3, Success } from './Slide.Styles';
@@ -8,24 +7,7 @@ require('./normalize.css');
 require('./skeleton.css');
 require('./App.css');
 
-const { 
-  changeFullpageSlide, 
-} = Fullpage;
-
 const pageNumber = 1;
-
-const fullPageOptions = { 
-  // for mouse/wheel events
-  // represents the level of force required to generate a slide change on non-mobile, 10 is default
-  scrollSensitivity: 0,
-
-  // for touchStart/touchEnd/mobile scrolling
-  // represents the level of force required to generate a slide change on mobile, 10 is default
-  touchSensitivity: 7,
-  scrollSpeed: 300,
-  hideScrollBars: true,
-  enableArrowKeys: true
-};
 
 class App extends React.Component {
   onDocumentLoad = ({ numPages }) => {
@@ -57,8 +39,6 @@ class App extends React.Component {
     }
     var data = new FormData();
     data.append( "json", JSON.stringify( payload ) );    
-    changeFullpageSlide.bind(null, 5);
-    console.log(data);
     fetch('/api/sendMail', {
       method: 'POST',
     }).then(function(response) {
@@ -74,9 +54,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: {
-        Fullpage: 0,
-      },
       successMessageVisibility: hidden,
       formVisibility: visible,
       name: '',
@@ -87,34 +64,29 @@ class App extends React.Component {
   }
 
   render() {
-    const goToTop = changeFullpageSlide.bind(null, 0);
-    const goToDetails = changeFullpageSlide.bind(null, 1);
-    const goToPrizes= changeFullpageSlide.bind(null, 2);
-    const goToLLSMission = changeFullpageSlide.bind(null, 3);
-    const goToTheDiveInn = changeFullpageSlide.bind(null, 4);
-    const goToRegister = changeFullpageSlide.bind(null, 5);
-
     const responsiveNavBar = (
       <Navbar inverse collapseOnSelect fixedTop>
+        <Navbar.Header>
         <Navbar.Toggle />
+        </Navbar.Header>
         <Navbar.Collapse>
-          <Nav pullRight>
-            <NavItem onSelect={goToTop} eventKey={1}>
+          <Nav>
+            <NavItem href="#top">
               Home
             </NavItem>
-            <NavItem onSelect={goToDetails} eventKey={2}>
+            <NavItem href="#details">
               Details
             </NavItem>
-            <NavItem onSelect={goToPrizes} eventKey={3}>
+            <NavItem href="#prizes">
               Prizes
             </NavItem>
-            <NavItem onSelect={goToLLSMission} eventKey={4}>
+            <NavItem href="#llsMission">
               LLS Mission
             </NavItem>            
-            <NavItem onSelect={goToTheDiveInn} eventKey={5}>
+            <NavItem href="#diveInn">
               Dive Inn
             </NavItem>
-            <NavItem onSelect={goToRegister} eventKey={6}>
+            <NavItem href="#register">
               Register
             </NavItem>
           </Nav>
@@ -122,8 +94,8 @@ class App extends React.Component {
       </Navbar>
     ); 
 
-    const ResponsiveSlides = [
-      <Slide style={homeStyle}>
+    const ResponsiveDivs = [      
+      <div style={homeStyle}>
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridCenterAlign}>
@@ -140,8 +112,8 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>  
-      </Slide>,
-      <Slide style={slideBackground}>
+      </div>,
+      <div style={slideBackground} id='details'>
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridLeftAlign}>
@@ -159,7 +131,7 @@ class App extends React.Component {
               <H3>How do I participate?</H3>
               <DetailsContentText> 
                 To join the tournament and secure a spot for your 2-person team, make a donation of $50 or more to 
-                <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank" rel="noopener noreferrer"> my donation page</a> and register via our <a onClick={goToRegister}>registration form</a>. 
+                <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank" rel="noopener noreferrer"> my donation page</a> and register via our <a href='#regster'>registration form</a>. 
               </DetailsContentText> 
               <H3>What if I don't play corn hole?</H3>
                 <DetailsContentText> 
@@ -172,8 +144,8 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>
-      </Slide>,       
-      <Slide style={prizesStyle}>
+      </div>,       
+      <div style={prizesStyle} id="prizes">
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridCenterAlign}>
@@ -193,8 +165,8 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>    
-      </Slide>,
-      <Slide style={slideBackground}>
+      </div>,
+      <div style={slideBackground} id='llsMission'>
         <Grid>
           <Row style={{rowTopMargin}}>
             <Col xs={12} md={12} style={gridLeftAlign}>
@@ -211,8 +183,8 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>
-      </Slide>,
-      <Slide style={diveInnStyle}>
+      </div>,
+      <div style={diveInnStyle} id='diveInn'>
         <Grid>
           <Row style={{rowTopMargin}}>
             <Col xs={12} md={12} style={gridCenterAlign}>
@@ -227,8 +199,8 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>
-      </Slide>,
-      <Slide style={registerStyle}>
+      </div>,
+      <div style={registerStyle} id='register'>
         <Grid>
           <Row>
             <Col xs={12} md={12} style={gridLeftAlign}>
@@ -265,16 +237,17 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>
-      </Slide>,
+      </div>,
   ];
 
-    fullPageOptions.slides = ResponsiveSlides;
+    //fullPageOptions.slides = ResponsiveSlides;
 
     return (
-        <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
-          {responsiveNavBar}
-        </Fullpage>
 
+    <div className='invisible-scrollbar'>
+        {responsiveNavBar}
+        {ResponsiveDivs}
+    </div>     
     );
   }
 }

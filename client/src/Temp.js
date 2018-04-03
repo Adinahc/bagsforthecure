@@ -1,3 +1,5 @@
+import { floatLeft, floatRight } from "./Slide.Styles";
+
     const verticalSlides = [
       <Slide style={homeStyle}>
         <Content>
@@ -8,10 +10,10 @@
           <H3>April 28, 2018 @ Dive Inn: 1380 S Broadway</H3>
           <input type="button" value="Details" /> <input type="button" value="Register" /><br />
           <a href="https://www.lls.org/" target="_blank" rel="noopener noreferrer">
-            <HomePageLogo src="./imgs/LLSLogo.jpg" alt="LLS Logo" />
+            <HomePageLogo src="./imgs/LLSLogo.jpg" style={floatLeft} alt="LLS Logo" />
           </a>
           <a href="https://www.facebook.com/diveinndenver/" target="_blank" rel="noopener noreferrer">
-            <HomePageLogo src="./imgs/DiveInnLogo.jpg" alt="Dive Inn Logo" />
+            <HomePageLogo src="./imgs/DiveInnLogo.jpg" style={floatRight} alt="Dive Inn Logo" />
           </a>
         </Content>
       </Slide>,

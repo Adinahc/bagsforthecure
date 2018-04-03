@@ -22,29 +22,37 @@ const H3 = styled.h3`
 const homeStyle = {
     backgroundImage: 'url("./imgs/DiveInnCornHole.jpg")',
     backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat'
+    backgroundRepeat: 'no-repeat, repeat',
+    width: '100%',
+    minHeight: '100vh',
+    overflow: 'auto',
 };
   
 const registerStyle = {
     backgroundImage: 'url("./imgs/CornHoleBoard.jpg")',
     backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat'
+    backgroundRepeat: 'no-repeat, repeat',
+    minHeight: '100vh'
 };
   
 const diveInnStyle = {
     backgroundImage: 'url("./imgs/DiveInnLogoBlack.jpg")',
     backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat'
+    backgroundRepeat: 'no-repeat, repeat',
+    minHeight: '100vh',
+    overflow: 'auto',
 };
   
 const prizesStyle = {
     backgroundImage: 'url("./imgs/Dive-Inn-Exterior.jpg")',
     backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat'
+    backgroundRepeat: 'no-repeat, repeat',
+    minHeight: '100vh'
 };
   
 const slideBackground = {
     backgroundColor: 'rgba(183, 188, 192, 255)',
+    minHeight: '100vh',
     overflow: 'scroll'
 };
 
