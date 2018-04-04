@@ -8,9 +8,14 @@ const Success = styled.span`
   color: green;
 `;
 
-const DetailsContentText = styled.span`
-  position: relative;
-  top: -20px;
+const Content = styled.div`
+    padding: 10px;
+    text-align: left;
+`;
+
+const ContentCenter = styled.div`
+    padding: 10px;
+    text-align: center;
 `;
 
 const H3 = styled.h3` 
@@ -19,38 +24,44 @@ const H3 = styled.h3`
   font-weight: bolder;
 `;
 
-const homeStyle = {
-    backgroundImage: 'url("./imgs/DiveInnCornHole.jpg")',
-    backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat',
-    width: '100%',
-    minHeight: '100vh',
-    overflow: 'auto',
-};
-  
-const registerStyle = {
-    backgroundImage: 'url("./imgs/CornHoleBoard.jpg")',
-    backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat',
-    minHeight: '100vh',
-    overflow: 'auto',
-};
-  
-const diveInnStyle = {
-    backgroundImage: 'url("./imgs/DiveInnLogoBlack.jpg")',
-    backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat',
-    minHeight: '100vh',
-    overflow: 'auto',
-};
-  
-const prizesStyle = {
-    backgroundImage: 'url("./imgs/Dive-Inn-Exterior.jpg")',
-    backgroundSize: '100% 100%',
-    backgroundRepeat: 'no-repeat, repeat',
-    minHeight: '100vh',
-    overflow: 'auto',
-};
+const Home = styled.div`
+    background-image: url("./imgs/DiveInnCornHole.jpg");
+    background-size: 100% 100%;
+    background-repeat: 'no-repeat, repeat';
+    min-height: 100vh;
+    overflow: auto;
+    width: 100%,
+`;
+
+const Register = styled.div`
+    background-image: url("./imgs/CornHoleBoard.jpg");
+    background-size: 100% 100%;
+    background-repeat: 'no-repeat, repeat';
+    min-height: 100vh;
+    overflow: auto;
+    width: 100%,
+`;
+
+const DiveInn = styled.div`
+    background-image: url("./imgs/DiveInnLogoBlack.jpg";
+    background-size: 100% 100%;
+    background-repeat: 'no-repeat, repeat';
+    min-height: 100vh;
+    overflow: auto;
+    width: 100%,
+`;
+
+const Prizes = styled.div`
+    background-image: url("./imgs/Dive-Inn-Exterior.jpg");
+    background-size: 100% 100%;
+    background-repeat: 'no-repeat, repeat';
+    min-height: 100vh;
+    overflow: auto;
+    width: 100%,
+    ul {
+        list-style-type: none;
+    }
+`;
   
 const slideBackground = {
     backgroundColor: 'rgba(183, 188, 192, 255)',
@@ -89,7 +100,7 @@ const gridCenterAlign = {
 
 const gridLeftAlign =  {
     textAlign: 'left',
-    top: '80px'
+    top: '100px'
 }
 
-export { diveInnStyle, floatLeft, floatRight, fullWidth, gridCenterAlign, gridLeftAlign, hidden, homeStyle,  prizesStyle, registerStyle, rowTopMargin, slideBackground, visible, DetailsContentText, H2, H3, Success };
+export { floatLeft, floatRight, fullWidth, gridCenterAlign, gridLeftAlign, hidden, rowTopMargin, slideBackground, visible, Content, ContentCenter, DiveInn, H2, H3, Home, Prizes, Register, Success };
