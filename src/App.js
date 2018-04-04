@@ -26,7 +26,7 @@ const successDiv = (
 const homeDiv = (
   <Home>
     <ContentCenter>
-    <Image responsive src="./imgs/BagsForTheCure-Logo.png" style={fullWidth} />
+    <Image responsive src="./imgs/BagsForTheCure-Logo.png" align="center" style={{margin: '0 auto'}} />
     <H3>A funraising event benefiting The Leukemia and Lymphoma Society</H3>
     <H3>If you like fun and hate cancer, come join us!</H3>
     <H3>April 28, 2018: 12:00PM<br/>@ Dive Inn: 1380 S Broadway</H3>
