@@ -89,12 +89,12 @@ const diveInn = (
       <Row>
         <Col xs={6} md={6} style={{textAlign: 'right'}}>
         <a href="./imgs/DiveInn365Specials2018.jpg" target="_blank">
-          <Image src="./imgs/DiveInn365Specials2018ThumbNail.jpg" responsive style={floatLeft} />
+          <Image src="./imgs/DiveInn365Specials2018ThumbNail.jpg" responsive  align="right" />
         </a>
         </Col>
         <Col xs={6} md={6} style={{textAlign: 'left'}}>
         <a href="./imgs/DiveInnMoscowMule2017.jpg" target="_blank">  
-          <Image src="./imgs/DiveInnMoscowMule2017ThumbNail.jpg" responsive style={floatRight} />
+          <Image src="./imgs/DiveInnMoscowMule2017ThumbNail.jpg" responsive  align="left" />
         </a>
         </Col>
       </Row>
