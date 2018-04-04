@@ -10,7 +10,7 @@ const pageNumber = 1;
 
 const successDiv = (
   <ContentCenter>
-    <Success>Thank you for registering. Once your donation has been confirmed, we will send you a confirmation email!</Success>
+    <Success>Thank you for registering. Once your donation has been made on my <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank" rel="noopener noreferrer">official campainge donation page</a>, we will send you a confirmation email!</Success>
   </ContentCenter>    
 );
 /*
@@ -165,7 +165,7 @@ class App extends React.Component {
       <Register>
         <Content>
           <H2>Register Your Team!</H2>  
-          To register your 2-person team, please submit the form below and make a <b>Tax-Deductible</b> $50 donation to my <a href=''>official campainge donation page</a>. An email will be sent once your registration has been confirmed.<br />
+          To register your 2-person team, please submit the form below and make a <b>Tax-Deductible</b> $50 donation to my <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank" rel="noopener noreferrer">official campainge donation page</a>. An email will be sent once your registration has been confirmed.<br />
           All donations go directly to The Leukemia & Lymphoma Society<br />
           Thank you!!!<br /><br />
           <div style={this.state.formVisibility}>
