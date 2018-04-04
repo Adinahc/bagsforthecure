@@ -184,8 +184,8 @@ class App extends React.Component {
               </div>
               <div className="form-field">
                 <label htmlFor="phonenumber">
-                  <div className="label-content" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} >Phone number:</div>
-                  <input type="text" name="phoneNumber" required />
+                  <div className="label-content">Phone number:</div>
+                  <input type="text" name="phoneNumber" value={this.state.phoneNumber} onChange={this.handlePhoneNumberChange} required />
                 </label>
               </div>
               <button type="submit">Send</button>
