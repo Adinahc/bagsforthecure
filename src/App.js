@@ -230,7 +230,7 @@ class App extends React.Component {
 
     return (
 
-    <div className='invisible-scrollbar'>
+    <div className='containter'> 
         {responsiveNavBar}        
         {DynamicDiv}
     </div>     
