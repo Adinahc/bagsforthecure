@@ -30,7 +30,7 @@ const Home = styled.div`
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
     overflow: auto;
-    width: 100%,
+    width: 100%;
 `;
 
 const Register = styled.div`
@@ -39,16 +39,16 @@ const Register = styled.div`
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
     overflow: auto;
-    width: 100%,
+    width: 100%;
 `;
 
 const DiveInn = styled.div`
-    background-image: url("./imgs/DiveInnLogoBlack.jpg";
+    background-image: url("./imgs/DiveInnLogoBlack.jpg");
     background-size: 100% 100%;
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
     overflow: auto;
-    width: 100%,
+    width: 100%;
 `;
 
 const Prizes = styled.div`
@@ -57,7 +57,7 @@ const Prizes = styled.div`
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
     overflow: auto;
-    width: 100%,
+    width: 100%;
     ul {
         list-style-type: none;
     }
