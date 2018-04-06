@@ -38,7 +38,7 @@ const homeDiv = (
     <Image responsive src="./imgs/BagsForTheCure-Logo.png" style={{margin: '0 auto'}} />
     <H3>A funraising event benefiting The Leukemia and Lymphoma Society</H3>
     <H3>If you like fun and hate cancer, come join us!</H3>
-    <H3>April 28, 2018: 12:00PM<br/>@ Dive Inn: 1380 S Broadway</H3>
+    <H3>April 28, 2018: 12:00PM<br/>@ <a rel="noopener noreferrer" href="https://www.google.com/maps/place/Dive+Inn/@39.6914524,-104.989288,17z/data=!3m1!4b1!4m5!3m4!1s0x876c7faceaa8651b:0xb6c001b6de5178f2!8m2!3d39.6914524!4d-104.9870993" target="_blank">Dive Inn: 1380 S Broadway</a></H3>
     <Grid>
       <Row>
         <Col xs={6} md={6} style={{textAlign: 'right'}}>
