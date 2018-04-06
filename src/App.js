@@ -286,7 +286,7 @@ class App extends React.Component {
               Register
             </NavItem>
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Collapse>    
       </Navbar>
     ); 
 
