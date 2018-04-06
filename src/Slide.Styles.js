@@ -9,11 +9,13 @@ const Success = styled.span`
 `;
 
 const Content = styled.div`
+    margin-top: 60px;
     padding: 10px;
     text-align: left;
 `;
 
 const ContentCenter = styled.div`
+    margin-top: 60px;
     padding: 10px;
     text-align: center;
 `;
@@ -26,6 +28,7 @@ const H3 = styled.h3`
 
 const Home = styled.div`
     background-image: url("./imgs/DiveInnCornHole.jpg");
+    background-position: center;
     background-size: 100% 100%;
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
@@ -35,6 +38,7 @@ const Home = styled.div`
 
 const Register = styled.div`
     background-image: url("./imgs/CornHoleBoard.jpg");
+    background-position: center;
     background-size: 100% 100%;
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
@@ -44,6 +48,7 @@ const Register = styled.div`
 
 const DiveInn = styled.div`
     background-image: url("./imgs/DiveInnLogoBlack.jpg");
+    background-position: center;
     background-size: 100% 100%;
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
@@ -53,6 +58,7 @@ const DiveInn = styled.div`
 
 const Prizes = styled.div`
     background-image: url("./imgs/Dive-Inn-Exterior.jpg");
+    background-position: center;
     background-size: 100% 100%;
     background-repeat: 'no-repeat, repeat';
     min-height: 100vh;
