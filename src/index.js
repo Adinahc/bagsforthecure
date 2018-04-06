@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'
 import './index.css';
 import App from './App';
-import { unregister } from './registerServiceWorker';
+import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
     <BrowserRouter>
         <App />
     </BrowserRouter>, 
     document.getElementById('root'));
-    unregister();
+registerServiceWorker();
