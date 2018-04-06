@@ -19,13 +19,13 @@ class RegisterDiv extends React.Component {
     
   handleSubmit(event) {
     event.preventDefault();
+    this.setState({loading: true, formVisibility: hidden});
     axios.post('https://mailsendnode.azurewebsites.net/api/sendMail?' + 
       'name=' + this.state.name + '&' +
       'email=' + this.state.email + '&' + 
       'phone=' + this.state.phoneNumber)
       .then(res => {
         window.location = '/Success';
-        this.setState({loading: true, formVisibility: hidden})
       }
     )
   }
