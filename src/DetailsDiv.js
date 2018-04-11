@@ -13,7 +13,7 @@ const DetailsDiv = () => (
                     <H3>Tournament details:</H3>
                     2 person teams, double elimination, starts promptly at 1pm!<br />
                     Total of 24 teams, so sign up quick!<br />
-                    1st Prize: We're working on something awesome<br />
+                    1st Prize: $150 cash!<br />
                     2nd Prize: 2 x $50 gift cards to Argonaut<br />
                     3rd Prize: 2 x $25 gift cards to the Dive Inn<br />
                     <H3>How do I participate?</H3>
