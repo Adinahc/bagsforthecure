@@ -22,7 +22,7 @@ const DetailsDiv = () => (
                     <H3>What if I don't play corn hole?</H3>
                     Come cheer on your friends and enjoy the food & drink specials. Each donation of $20 will get you an entry into our raffle!
                     <br />
-                    If you can't make it, please consider making a donation on <a href="http://pages.mwoy.org/rm/denver18/cclarkston">my donation page</a>.  Any amount helps us towards our goal
+                    If you can't make it, please consider making a donation on <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank" rel="noopener noreferrer">my donation page</a>.  Any amount helps us towards our goal
                     <br />
                     Any questions, please send a message to bagsforthecure@gmail.com
                 </Content>
