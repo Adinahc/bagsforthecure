@@ -20,7 +20,7 @@ const DetailsDiv = () => (
                     To join the tournament and secure a spot for your 2-person team, make a donation of $50 or more to 
                     <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank" rel="noopener noreferrer"> my donation page</a> and register via our <a href='/Register'>registration form</a>. 
                     <H3>What if I don't play corn hole?</H3>
-                    Come cheer on your friends and enjoy the food & drink specials. Each donation of $20 will get you an entry into our raffle!
+                    Come cheer on your friends and enjoy the food & drink specials. Each donation of $15 will get you an entry into our raffle!
                     <br />
                     If you can't make it, please consider making a donation on <a href="http://pages.mwoy.org/rm/denver18/cclarkston" target="_blank" rel="noopener noreferrer">my donation page</a>.  Any amount helps us towards our goal
                     <br />
